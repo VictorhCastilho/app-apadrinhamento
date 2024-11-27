@@ -42,37 +42,74 @@ class SampleItemListView extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) {
-          final item = items[index];
-
-          return GestureDetector(
-            onTap: () {
-              // Navega para a tela de detalhes passando a URL do vídeo
-              Navigator.restorablePushNamed(
-                context,
-                SampleItemDetailsView.routeName,
-                arguments: item.videoUrl,
-              );
-            },
-            child: Container(
-              margin: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(item.imagePath), // Usa a imagem específica do item
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(12.0),
+      body: Column(
+        children: [
+          // Grid de itens
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(8.0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // Número de colunas
+                crossAxisSpacing: 8.0, // Espaçamento horizontal
+                mainAxisSpacing: 8.0, // Espaçamento vertical
+                childAspectRatio: 1, // Proporção largura/altura
               ),
-              height: 200, // Defina a altura do botão conforme necessário
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: const SizedBox.expand(), // Isso garante que o botão ocupe todo o espaço
+              itemCount: items.length,
+              itemBuilder: (BuildContext context, int index) {
+                final item = items[index];
+
+                return GestureDetector(
+                  onTap: () {
+                    // Navega para a tela de detalhes passando a URL do vídeo
+                    Navigator.restorablePushNamed(
+                      context,
+                      SampleItemDetailsView.routeName,
+                      arguments: item.videoUrl,
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(item.imagePath), // Usa a imagem específica do item
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    height: 200, // Defina a altura do botão conforme necessário
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12.0),
+                      child: const SizedBox.expand(), // Isso garante que o botão ocupe todo o espaço
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          
+          // Novo botão centralizado na parte inferior
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                // Navega para o link quando o botão for pressionado
+                final url = 'https://www.aaci.org.br/apadrinhamento-3';
+                // Use o método para abrir o link (isso precisa de um pacote como `url_launcher`)
+                // _launchURL(url); 
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
+              child: const Text(
+                'Visite o Apadrinhamento',
+                textAlign: TextAlign.center,
               ),
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }

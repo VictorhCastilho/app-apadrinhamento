@@ -61,8 +61,7 @@ class _SampleItemDetailsViewState extends State<SampleItemDetailsView> {
       ),
       body: Column(
         children: [
-          // Usa o YoutubePlayerBuilder para criar o player
-          Expanded( // Use Expanded para ocupar todo o espaço disponível
+          Expanded( 
             child: YoutubePlayerBuilder(
               player: YoutubePlayer(
                 controller: _controller,
@@ -70,7 +69,7 @@ class _SampleItemDetailsViewState extends State<SampleItemDetailsView> {
               builder: (context, player) {
                 return Column(
                   children: [
-                    player, // Aqui está o player de vídeo
+                    player,
                     const SizedBox(height: 20),
                     const Text('More Information Here'),
                   ],
