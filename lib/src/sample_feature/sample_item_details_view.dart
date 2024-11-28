@@ -71,7 +71,7 @@ class _SampleItemDetailsViewState extends State<SampleItemDetailsView> {
                   children: [
                     player,
                     const SizedBox(height: 20),
-                    const Text('More Information Here'),
+                    const Text(''),
                   ],
                 );
               },

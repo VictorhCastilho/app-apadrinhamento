@@ -104,7 +104,7 @@ class SampleItemListView extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Visite o Apadrinhamento',
+                'Mais Informações 💬',
                 textAlign: TextAlign.center,
               ),
             ),
