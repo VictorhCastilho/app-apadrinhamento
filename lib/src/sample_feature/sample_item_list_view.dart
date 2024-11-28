@@ -2,8 +2,42 @@ import 'package:flutter/material.dart';
 import 'sample_item.dart';
 import 'sample_item_details_view.dart';
 import '../settings/settings_view.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 /// Displays a list of SampleItems.
+/// 
+class WebViewScreen extends StatelessWidget {
+  final String url;
+
+  const WebViewScreen({super.key, required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Mais Informações'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(
+          url: WebUri(url), // Convert the string to a WebUri object
+        ),
+        onLoadStart: (controller, url) {
+          // Lógica ao iniciar o carregamento, se necessário
+        },
+        onLoadStop: (controller, url) {
+          // Lógica ao finalizar o carregamento, se necessário
+        },
+      ),
+    );
+  }
+}
+
 class SampleItemListView extends StatelessWidget {
   const SampleItemListView({
     super.key,
@@ -14,6 +48,7 @@ class SampleItemListView extends StatelessWidget {
       SampleItem(4, 'https://youtu.be/_qv-tuxN7Z4?si=njW0P8tEG1bHs1FA', 'assets/images/apadrinhamento4.png'),
     ],
   });
+
 
   static const routeName = '/';
 
@@ -89,23 +124,24 @@ class SampleItemListView extends StatelessWidget {
           
           // Novo botão centralizado na parte inferior
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Navega para o link quando o botão for pressionado
-                final url = 'https://www.aaci.org.br/apadrinhamento-3';
-                // Use o método para abrir o link (isso precisa de um pacote como `url_launcher`)
-                // _launchURL(url); 
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-              ),
-              child: const Text(
-                'Mais Informações 💬',
-                textAlign: TextAlign.center,
+  padding: const EdgeInsets.all(16.0),
+  child: ElevatedButton(
+    onPressed: () {
+      final url = 'https://www.aaci.org.br/apadrinhamento-3';
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WebViewScreen(url: url)),
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+    ),
+    child: const Text(
+      'Mais Informações 💬',
+      textAlign: TextAlign.center,
               ),
             ),
           ),
