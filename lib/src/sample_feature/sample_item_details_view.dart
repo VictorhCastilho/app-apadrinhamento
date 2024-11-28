@@ -57,7 +57,6 @@ class _SampleItemDetailsViewState extends State<SampleItemDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _isFullScreen ? null : AppBar( // Oculta a AppBar em fullscreen
-        title: const Text('Apadrinhamento'),
       ),
       body: Column(
         children: [

@@ -5,7 +5,7 @@ import '../settings/settings_view.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 /// Displays a list of SampleItems.
-/// 
+///
 class WebViewScreen extends StatelessWidget {
   final String url;
 
@@ -42,13 +42,16 @@ class SampleItemListView extends StatelessWidget {
   const SampleItemListView({
     super.key,
     this.items = const [
-      SampleItem(1, 'https://youtu.be/6EMx1gF56xE?si=VjbE2yDkWwVjbadI', 'assets/images/apadrinhamento1.png'), 
-      SampleItem(2, 'https://youtu.be/wZT5BEyTMKg?si=GtVIIStzCuUZvpvu', 'assets/images/apadrinhamento2.png'), 
-      SampleItem(3, 'https://youtu.be/dwSWGYZ-HVw?si=ldc1kYUemqvzVSTg', 'assets/images/apadrinhamento3.png'), 
-      SampleItem(4, 'https://youtu.be/_qv-tuxN7Z4?si=njW0P8tEG1bHs1FA', 'assets/images/apadrinhamento4.png'),
+      SampleItem(1, 'https://youtu.be/6EMx1gF56xE?si=VjbE2yDkWwVjbadI',
+          'assets/images/apadrinhamento1.png'),
+      SampleItem(2, 'https://youtu.be/wZT5BEyTMKg?si=GtVIIStzCuUZvpvu',
+          'assets/images/apadrinhamento2.png'),
+      SampleItem(3, 'https://youtu.be/dwSWGYZ-HVw?si=ldc1kYUemqvzVSTg',
+          'assets/images/apadrinhamento3.png'),
+      SampleItem(4, 'https://youtu.be/_qv-tuxN7Z4?si=njW0P8tEG1bHs1FA',
+          'assets/images/apadrinhamento4.png'),
     ],
   });
-
 
   static const routeName = '/';
 
@@ -67,7 +70,11 @@ class SampleItemListView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Apadrinhamento'),
+        title: Padding(
+          padding: const EdgeInsets.only(
+              left: 100.0), // Ajuste o valor conforme necessário
+          child: const Text('Apadrinhamento'),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -106,7 +113,8 @@ class SampleItemListView extends StatelessWidget {
                     margin: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(item.imagePath), // Usa a imagem específica do item
+                        image: AssetImage(
+                            item.imagePath), // Usa a imagem específica do item
                         fit: BoxFit.cover,
                       ),
                       borderRadius: BorderRadius.circular(12.0),
@@ -114,34 +122,37 @@ class SampleItemListView extends StatelessWidget {
                     height: 200, // Defina a altura do botão conforme necessário
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
-                      child: const SizedBox.expand(), // Isso garante que o botão ocupe todo o espaço
+                      child: const SizedBox
+                          .expand(), // Isso garante que o botão ocupe todo o espaço
                     ),
                   ),
                 );
               },
             ),
           ),
-          
+
           // Novo botão centralizado na parte inferior
           Padding(
-  padding: const EdgeInsets.all(16.0),
-  child: ElevatedButton(
-    onPressed: () {
-      final url = 'https://www.aaci.org.br/apadrinhamento-3';
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => WebViewScreen(url: url)),
-      );
-    },
-    style: ElevatedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-    ),
-    child: const Text(
-      'Mais Informações 💬',
-      textAlign: TextAlign.center,
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                final url = 'https://www.aaci.org.br/apadrinhamento-3';
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => WebViewScreen(url: url)),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
+              child: const Text(
+                'Mais Informações 💬',
+                textAlign: TextAlign.center,
               ),
             ),
           ),

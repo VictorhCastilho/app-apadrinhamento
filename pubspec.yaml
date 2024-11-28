@@ -1,5 +1,5 @@
-name: apadrinhamento
-description: "A new Flutter project."
+name: Apadrinhamento
+description: "Aplicativo para ensinar sobre o sistema de Apadrinhamento afetivo"
 
 # Prevent accidental publishing to pub.dev.
 publish_to: 'none'
