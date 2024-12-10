@@ -43,13 +43,13 @@ class SampleItemListView extends StatelessWidget {
     super.key,
     this.items = const [
       SampleItem(1, 'https://youtu.be/6EMx1gF56xE?si=VjbE2yDkWwVjbadI',
-          'assets/images/apadrinhamento1.png'),
+          'assets/images/apadrinhamento01.jpeg'),
       SampleItem(2, 'https://youtu.be/wZT5BEyTMKg?si=GtVIIStzCuUZvpvu',
-          'assets/images/apadrinhamento2.png'),
+          'assets/images/apadrinhamento02.jpeg'),
       SampleItem(3, 'https://youtu.be/dwSWGYZ-HVw?si=ldc1kYUemqvzVSTg',
-          'assets/images/apadrinhamento3.png'),
+          'assets/images/apadrinhamento03.jpeg'),
       SampleItem(4, 'https://youtu.be/_qv-tuxN7Z4?si=njW0P8tEG1bHs1FA',
-          'assets/images/apadrinhamento4.png'),
+          'assets/images/apadrinhamento04.jpeg'),
     ],
   });
 
