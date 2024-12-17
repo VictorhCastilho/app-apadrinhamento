@@ -72,8 +72,9 @@ class SampleItemListView extends StatelessWidget {
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.only(
-              left: 100.0), // Ajuste o valor conforme necessário
-          child: const Text('Apadrinhamento'),
+              left: 49.0), // Ajuste o valor conforme necessário
+          child: const Text('Apadrinhamento Afetivo', style: TextStyle(fontSize: 25),)
+          ,
         ),
         actions: [
           IconButton(
@@ -131,28 +132,31 @@ class SampleItemListView extends StatelessWidget {
             ),
           ),
 
-          // Novo botão centralizado na parte inferior
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                final url = 'https://www.aaci.org.br/apadrinhamento-3';
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => WebViewScreen(url: url)),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+          // Novo botão centralizado logo abaixo do grid
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  final url = 'https://www.tjmg.jus.br/portal-tjmg/institucional/infancia-e-juventude/';
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WebViewScreen(url: url)),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
-              ),
-              child: const Text(
-                'Mais Informações 💬',
-                textAlign: TextAlign.center,
+                child: const Text(
+                  'Mais Informações 💬',
+                  textAlign: TextAlign.center, style: TextStyle(fontSize: 18),
+                ),
               ),
             ),
           ),
